@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 
-if ['util'].include?(node[:instance_role])
+if ['util', 'app_master'].include?(node[:instance_role])
 
 execute "set_overcommit_memory" do
   command "echo 1 > /proc/sys/vm/overcommit_memory"
@@ -41,6 +41,7 @@ template "/etc/redis_util.conf" do
     :timeout => 300000,
   })
 end
+
 
 template "/data/monit.d/redis_util.monitrc" do
   owner 'root'
