@@ -90,16 +90,13 @@ if ['solo', 'util'].include?(node[:instance_role])
      command "monit quit && telinit q"
    end
 
+   execute "quit-solr" do
+     command "pkill -9 -f solr"
+   end
+    
    execute "start-solr" do
      command "sleep 3 && monit start solr_9080"
    end
    
-   execute "import-foods" do
-     command "curl http://localhost:8983/solr/core0/dataimport?command=full-import"
-   end
-   
-   execute "import-exercises" do
-     command "curl http://localhost:8983/solr/core1/dataimport?command=full-import"
-   end
 
 end
