@@ -90,9 +90,6 @@ if ['solo', 'util'].include?(node[:instance_role])
      command "monit quit && telinit q"
    end
 
-   execute "quit-solr" do
-     command "pkill -9 -f solr"
-   end
     
    execute "start-solr" do
      command "sleep 3 && monit start solr_9080"
