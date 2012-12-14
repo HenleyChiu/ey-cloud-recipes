@@ -4,6 +4,8 @@
 #  }
 #end
 
+require_recipe "database"
+
 # uncomment if you want to run couchdb recipe
 # require_recipe "couchdb"
 
